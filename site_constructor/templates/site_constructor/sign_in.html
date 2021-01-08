@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Sign In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'site_constructor/css/sign_in.css' %}">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<form action="/sign_in/" method="POST">
+    <div class="container">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="lock-container">
+                    <h1>Account Access</h1>
+                    <div class="panel panel-default text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-circle img-login">
+                        <div class="panel-body">
+                            {% csrf_token %}
+                            <input for="{{ login_form.username.id_for_label }}" class="form-control" type="text" name="username" id="username"
+                                   placeholder="Username" value=" ">
+                            <input for="{{ login_form.password.id_for_label }}" class="form-control" type="password" name="password" id="password"
+                                   placeholder="Enter Password" value="">
+
+                            <input class="btn btn-success" type="submit" value="Login"><i
+                                class="fa fa-fw fa-unlock-alt"></i>
+                            {#                <a  class="btn btn-success">Login <i class="fa fa-fw fa-unlock-alt"></i></a>#}
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $("body").addClass("login breakpoint-1024");
+    });
+</script>
+</body>
+</html>

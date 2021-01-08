@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'site_constructor/registration/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'site_constructor/registration/css/style.css'%}">
+</head>
+<body>
+
+    <div class="main">
+
+        <h1>it-mentor</h1>
+        <div class="container">
+            <div class="sign-up-content">
+
+                <form method="POST" action="/registration/" class="signup-form">
+                    {% csrf_token %}
+
+                    <h2 class="form-title">Choice type of user</h2>
+                    <div class="form-radio">
+                        <input type="radio" name="types" value="M" id="newbie" />
+                        <label for="newbie">Mentor</label>
+
+                        <input type="radio" name="types" value="S" id="average" />
+                        <label for="average">Student</label>
+
+                        <input type="radio" name="types" value="ITS" id="master" />
+                        <label for="master">School</label>
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="{{ reg_form.first_name.id_for_label }}">Name</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="Enter your Name"/>
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="{{ reg_form.user_name.id_for_label }}">Login</label>
+                        <input type="text" name="user_name" id="user_name" placeholder="Enter your login"/>
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="{{ reg_form.email.id_for_label }}">Email</label>
+                        <input type="email" name="email" id="email" placeholder="user@gmail.com"/>
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="{{ reg_form.password.id_for_label }}">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter your password"/>
+                    </div>
+
+
+                    <div class="form-textbox">
+                        <label for="{{ reg_form.password_retype.id_for_label }}">Password ret.</label>
+                        <input type="password" name="password_retype" id="password_retype" placeholder="Confirm your password"/>
+                    </div><br>
+
+
+                    <div class="form-textbox">
+                        <input type="submit" name="submit" id="submit" class="submit" value="Create account" />
+                    </div>
+                </form>
+
+                <p class="loginhere">
+                    Already have an account ?<a href="{% url 'sign_in' %}" class="loginhere-link"> Sign in</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'site_constructor/registration/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'site_constructor/registration/js/main.js'%}"></script>
+</body>
+</html>
